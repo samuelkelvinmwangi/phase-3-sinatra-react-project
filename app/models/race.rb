@@ -1,3 +1,3 @@
 class Race < ActiveRecord::Base
-    has_many :runners
+    belongs_to :runner
 end

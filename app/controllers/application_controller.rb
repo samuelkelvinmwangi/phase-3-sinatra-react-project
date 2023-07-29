@@ -28,4 +28,12 @@ class ApplicationController < Sinatra::Base
     runner.to_json
   end
 
+  # Delete a runner
+  delete '/runners/:id' do
+    content_type :json
+    runner = Runner.find(params[:id])
+    runner.destroy
+    { message: 'Runner deleted successfully' }.to_json
+  end
+
 end

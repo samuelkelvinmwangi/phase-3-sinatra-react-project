@@ -36,4 +36,35 @@ class ApplicationController < Sinatra::Base
     { message: 'Runner deleted successfully' }.to_json
   end
 
+  # Routes for race model
+  # get all races
+  get '/races' do
+    content_type :json
+    races = Race.all
+    races.to_json
+  end
+
+  # get a specific race
+  get '/races' do
+    content_type :json
+    race = Race.find(params[:id])
+    race.to_json
+  end
+
+  # create a new race
+  post '/races' do
+    content_type :json
+    data = JSON.parse(request.body.read)
+    race = Race.create(data)
+    race.to_json
+  end
+
+  # delete a race
+  delete '/race/:id' do
+    content_type :json
+    race = Race.find(params[:id])
+    race.destroy
+    {message: 'Race deleted successfully'}.to_json
+  end
+
 end

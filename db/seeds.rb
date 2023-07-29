@@ -1,6 +1,7 @@
 require 'faker'
 
 puts "🌱 Seeding spices..."
+
 # clear existing data
 Runner.destroy.all
 Race.destroy.all

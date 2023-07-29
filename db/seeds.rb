@@ -12,5 +12,17 @@ Race.destroy.all
       email: Faker::Internet.email,
       phone_number: Faker::PhoneNumber.phone_number
     )
+    end
+
+# Create marathons and associate with runners
+runners = Runner.all
+
+10.times do
+    Marathon.create(
+      name: Faker::Game.title,
+      distance: Faker::Number.decimal(l_digits: 2),
+      runner: runners.sample
+    )
+  end
 
 puts "✅ Done seeding!"

@@ -22,9 +22,11 @@ class ApplicationController < Sinatra::Base
   
   # create a new runner
   post '/runners' do
-    content_type :json
-    data = JSON.parse(request.body.read)
-    runner = Runner.create(data)
+    runner = Runner.create(
+      name: params[:name],
+      email: params[:email],
+      phone_number: params[:phone_number]
+    )
     runner.to_json
   end
 
@@ -45,7 +47,7 @@ class ApplicationController < Sinatra::Base
   end
 
   # get a specific race
-  get '/races' do
+  get '/races/:id' do
     content_type :json
     race = Race.find(params[:id])
     race.to_json
@@ -53,9 +55,11 @@ class ApplicationController < Sinatra::Base
 
   # create a new race
   post '/races' do
-    content_type :json
-    data = JSON.parse(request.body.read)
-    race = Race.create(data)
+    race = Race.create(
+      name: params[:name],
+      distance: params[:distance],
+      runner_id: params[:runner_id]
+    )
     race.to_json
   end
 

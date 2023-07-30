@@ -44,6 +44,10 @@ you can run the front end server with this command
 
 $ npm start
 
+the use the following code to run the front end server
+
+ http://localhost:3000
+
 This runs a front end server that is mainly coded using react app
 as the main programing language. 
 
